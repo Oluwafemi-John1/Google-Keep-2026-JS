@@ -8,14 +8,16 @@ const signUp = () => {
 
     // console.log(fName, lName, mail, pass);
     const user = {fName, lName, mail, pass}
+    // if(fName.trim() == '' || )
     // console.log(user);
     allUsers.push(user);
     console.log(allUsers);
 }
 
-window.addEventListener('keydown', (e)=>{
+window.addEventListener('keypress',(e)=>{
     // console.log(e);
-    if(e.code === 'Enter') {
+    if(e.key == 'Enter') {
+        // console.log('enter ooo');
         signUp()
     }
 })
