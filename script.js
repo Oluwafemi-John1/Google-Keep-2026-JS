@@ -27,6 +27,7 @@ const signUp = () => {
         // console.log(user);
         allUsers.push(user);
         console.log(allUsers);
+        localStorage.setItem('users', JSON.stringify(allUsers))
         displayUsers()
     }
 }
