@@ -5,8 +5,17 @@ window.addEventListener('keypress', (e) => {
         signUp()
     }
 })
+const allUsers = JSON.parse(localStorage.getItem('users')) || [];
+displayUsers()
+// let gottenUsers = JSON.parse(localStorage.getItem('users'));
+// console.log(gottenUsers);
 
-const allUsers = [];
+// if(gottenUsers) {
+//     allUsers = gottenUsers
+// } else {
+//     allUsers = []
+// }
+
 
 const signUp = () => {
     const fName = document.getElementById('firstName').value
@@ -32,6 +41,17 @@ const signUp = () => {
     }
 }
 
+const deleteUser = (i) => {
+    const confirmDelete = confirm('Are you sure you want to delete?')
+    if(confirmDelete) {
+        allUsers.splice(i,1)
+        localStorage.setItem('users', JSON.stringify(allUsers))
+        displayUsers()
+    } else {
+        displayUsers()
+    }
+}
+
 function displayUsers() {
     show.innerHTML = ''
     for (let index = 0; index < allUsers.length; index++) {
@@ -44,6 +64,7 @@ function displayUsers() {
                         <h3>${element.fName} ${element.lName}</h3>
                         <p>${element.mail}</p>
                     </p>
+                    <button onclick="deleteUser(${index})" class="btn btn-danger">Delete</button>
                 </div>
             </div>
         `
