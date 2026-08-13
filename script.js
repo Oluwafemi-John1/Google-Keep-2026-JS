@@ -34,19 +34,30 @@ const signUp = () => {
         }, 2000)
     } else {
         // console.log(user);
-        allUsers.push(user);
-        console.log(allUsers);
-        localStorage.setItem('users', JSON.stringify(allUsers))
-        // displayUsers()
-        // buttona.innerHTML = `
-        //     <button class="btn btn-dark w-100 border-0" type="button" disabled>
-        //         <span class="spinner-border spinner-border-sm" aria-hidden="true"></span>
-        //         <span role="status">Loading...</span>
-        //     </button>
-        // `
-        // setTimeout(() => {
-        //     window.location.href = 'signin.html'
-        // }, 1500);
+        const found = allUsers.find(eniyan => eniyan.mail === user.mail)
+        // console.log(found);
+        if (found) {
+            // alert('user already exists')
+            showError.innerHTML = `<p class="alert alert-danger text-center fw-bold py-2">user already exists!</p>`
+            setTimeout(() => {
+                showError.innerHTML = ''
+            }, 2000)
+        } else {
+            allUsers.push(user);
+            // console.log(allUsers);
+
+            localStorage.setItem('users', JSON.stringify(allUsers))
+            // displayUsers()
+            buttona.innerHTML = `
+                <button class="btn btn-dark w-100 border-0" type="button" disabled>
+                    <span class="spinner-border spinner-border-sm" aria-hidden="true"></span>
+                    <span role="status">Loading...</span>
+                </button>
+            `
+            setTimeout(() => {
+                window.location.href = 'signin.html'
+            }, 1500);
+        }
     }
 }
 
