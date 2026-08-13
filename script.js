@@ -6,7 +6,7 @@ window.addEventListener('keypress', (e) => {
     }
 })
 const allUsers = JSON.parse(localStorage.getItem('users')) || [];
-displayUsers()
+// displayUsers()
 // let gottenUsers = JSON.parse(localStorage.getItem('users'));
 // console.log(gottenUsers);
 
@@ -37,14 +37,23 @@ const signUp = () => {
         allUsers.push(user);
         console.log(allUsers);
         localStorage.setItem('users', JSON.stringify(allUsers))
-        displayUsers()
+        // displayUsers()
+        // buttona.innerHTML = `
+        //     <button class="btn btn-dark w-100 border-0" type="button" disabled>
+        //         <span class="spinner-border spinner-border-sm" aria-hidden="true"></span>
+        //         <span role="status">Loading...</span>
+        //     </button>
+        // `
+        // setTimeout(() => {
+        //     window.location.href = 'signin.html'
+        // }, 1500);
     }
 }
 
 const deleteUser = (i) => {
     const confirmDelete = confirm('Are you sure you want to delete?')
-    if(confirmDelete) {
-        allUsers.splice(i,1)
+    if (confirmDelete) {
+        allUsers.splice(i, 1)
         localStorage.setItem('users', JSON.stringify(allUsers))
         displayUsers()
     } else {
