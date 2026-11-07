@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Keep</title>
+    <link href="https://fonts.googleapis.com/css2?family=Google+Sans:wght@400;500&family=Roboto:wght@400;500&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons+Outlined" rel="stylesheet">
+    <link href="keep.css" rel="stylesheet">
+</head>
+
+<body>
+    <header id="topbar">
+        <button class="icon-btn" id="menuBtn" title="Main menu"><span class="material-icons-outlined">menu</span></button>
+        <div class="logo"><span class="logo-mark"></span><span class="logo-text" id="logoText">Keep</span></div>
+        <div class="search">
+            <span class="material-icons-outlined">search</span>
+            <input id="searchInput" type="text" placeholder="Search" autocomplete="off">
+            <button class="icon-btn" id="clearSearch" title="Clear search" hidden><span class="material-icons-outlined">close</span></button>
+        </div>
+        <div class="top-actions">
+            <button class="icon-btn" id="refreshBtn" title="Refresh"><span class="material-icons-outlined">refresh</span></button>
+            <button class="icon-btn" id="viewBtn" title="List view"><span class="material-icons-outlined">view_agenda</span></button>
+            <button class="icon-btn" id="themeBtn" title="Toggle dark mode"><span class="material-icons-outlined">dark_mode</span></button>
+            <div class="account">
+                <button class="avatar" id="avatarBtn"></button>
+                <div class="account-menu" id="accountMenu" hidden>
+                    <div class="avatar big" id="avatarBig"></div>
+                    <div class="acc-name" id="accName"></div>
+                    <div class="acc-mail" id="accMail"></div>
+                    <button class="pill-btn" id="signOutBtn">Sign out</button>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <nav id="sidebar">
+        <ul id="navList"></ul>
+        <div class="nav-foot">Open-source Keep clone</div>
+    </nav>
+
+    <main id="main">
+        <section id="composerWrap">
+            <div id="composer" class="composer collapsed">
+                <div class="collapsed-row" id="composerCollapsed">
+                    <span class="ph">Take a note...</span>
+                    <button class="icon-btn" id="newListBtn" title="New list"><span class="material-icons-outlined">check_box</span></button>
+                </div>
+                <div class="expanded" id="composerExpanded" hidden>
+                    <button class="icon-btn pin" id="cPin" title="Pin note"><span class="material-icons-outlined">push_pin</span></button>
+                    <input id="cTitle" class="title-in" placeholder="Title" autocomplete="off">
+                    <div id="cBodyWrap">
+                        <div id="cBody" class="body-in" contenteditable="true" data-ph="Take a note..."></div>
+                        <div id="cItems" hidden></div>
+                    </div>
+                    <div class="chips" id="cChips"></div>
+                    <div class="toolbar">
+                        <div class="tools" id="cTools"></div>
+                        <button class="text-btn" id="cClose">Close</button>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <div id="emptyState" class="empty" hidden></div>
+        <div id="trashBanner" class="banner" hidden>
+            <span>Notes in Trash are deleted after 7 days.</span>
+            <button class="text-btn" id="emptyTrash">Empty Trash</button>
+        </div>
+        <div id="notesArea"></div>
+    </main>
+
+    <div id="modalBack" hidden>
+        <div id="modal" class="note"></div>
+    </div>
+    <div id="snackbar" hidden><span id="snackMsg"></span><button id="snackUndo" class="text-btn">Undo</button></div>
+    <div id="popover" hidden></div>
+    <script src="keep.js"></script>
+</body>
+
+</html>
